@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     // Opening the file to be read
     int fd = open(argv[1], O_RDONLY);
 
-    // if file is invalid, return error -2
+    // if file is invalid, return error -1
     if (fd == -1) {
         perror("Unable to open file");
         return -1;
@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
     int words = 0, lines = 0, bytes = 0;
     char buffer[BUF_SIZE];
 
-    int insideWord = 0;
+    int midWord = 0;
 
     // while loop for reading thru the file
     while ((ch = read(fd, buffer, BUF_SIZE)) > 0) {
@@ -48,11 +48,11 @@ int main(int argc, char *argv[])
 
             // Check for space, tab, or newline to count words
             if (buffer[i] == ' ' || buffer[i] == '\t' || buffer[i] == '\n') {
-                // Transition from inside a word to a whitespace character
-                insideWord = 0;
-            } else if (!insideWord) {
-                // Transition from a whitespace character to inside a word
-                insideWord = 1;
+                // if was inside word, transition to whitespace
+                midWord = 0;
+            } else if (!midWord) {
+                // Transition from a whitespace character to inside a word and increment word count
+                midWord = 1;
                 words++;
             }
         }
@@ -62,10 +62,6 @@ int main(int argc, char *argv[])
     // close open file
     close(fd);
 
-    // Check for the last word if the file doesn't end with a space, tab, or newline
-//    if (ch > 0 && buffer[ch - 1] != ' ' && buffer[ch - 1] != '\t' && buffer[ch - 1] != '\n') {
-//        words++;
-//    }
 
     // print results
     printf("%d %d %d %s\n", lines, words, bytes, argv[1]);

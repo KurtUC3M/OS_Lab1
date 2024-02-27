@@ -46,7 +46,8 @@ int main(int argc, char *argv[])
     }
 
 
-    // if loop finishes, file was not found in the directory, return 0
+    // if loop finishes, file was not found in the directory, return 0, not an error but nothing
+    // found
     printf("File %s is not in directory %s\n", file_name, dir_name);
     closedir(dir);
 	return 0;

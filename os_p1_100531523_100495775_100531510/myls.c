@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 
     DIR *dir = opendir(dir_path);
 
-    // if dir provided is invalid, return -2
+    // if dir provided is invalid, return -1
     if (dir == NULL) {
         perror(("opendir error"));
         return -1;
