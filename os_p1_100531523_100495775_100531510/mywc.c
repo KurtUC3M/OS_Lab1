@@ -11,7 +11,7 @@
 
 int main(int argc, char *argv[])
 {
-	/*If less than two arguments (argv[0] -> program, argv[1] -> file to process) print an error y return -1*/
+	// If less than two arguments, program and file, return error -1
 	if(argc < 2)
 	{
 		printf("Too few arguments\n");
@@ -32,6 +32,7 @@ int main(int argc, char *argv[])
     int words = 0, lines = 0, bytes = 0;
     char buffer[BUF_SIZE];
 
+    // basically boolean to determine if we are inside a word or not
     int midWord = 0;
 
     // while loop for reading thru the file
@@ -50,8 +51,10 @@ int main(int argc, char *argv[])
             if (buffer[i] == ' ' || buffer[i] == '\t' || buffer[i] == '\n') {
                 // if was inside word, transition to whitespace
                 midWord = 0;
+
+                // if we werent in a word, and now are, change to inside word and ++ word value
             } else if (!midWord) {
-                // Transition from a whitespace character to inside a word and increment word count
+
                 midWord = 1;
                 words++;
             }

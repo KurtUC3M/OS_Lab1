@@ -14,10 +14,11 @@ int main(int argc, char *argv[])
     // to hold path to directory
     char *dir_path;
 
-    // if a dir_path is provided, use, ow, use cwd
+    // if a dir_path is provided, use, otherwise use the cwd
     if (argc >= 2) {
         dir_path = argv[1];
     } else {
+        // array of chars to hold cwd with max path of 4096 characters
         char cwd[PATH_MAX];
         if (getcwd(cwd, sizeof(cwd)) != NULL) {
             dir_path = cwd;

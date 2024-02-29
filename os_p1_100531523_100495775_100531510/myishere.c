@@ -8,7 +8,6 @@
 
 int main(int argc, char *argv[])
 {
-	/* If less than three arguments (argv[0] -> program, argv[1] -> directory to search, argv[2] -> file to find) print an error y return -1 */
 	char *dir_name;
     char *file_name;
 
@@ -22,9 +21,10 @@ int main(int argc, char *argv[])
         file_name = argv[2];
     }
 
+    // create DIR object ptr to hold the directory
     DIR *dir = opendir(dir_name);
 
-    // if directory is invalid, return -2
+    // if directory is invalid, return -1
     if (dir == NULL) {
         perror(("opendir error"));
         return -1;
