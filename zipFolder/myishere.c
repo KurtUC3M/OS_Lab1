@@ -4,6 +4,7 @@
 #include <sys/types.h>
 #include <dirent.h>
 #include <string.h>
+#include <errno.h>      // To help with readdir system call 
 
 
 int main(int argc, char *argv[])
@@ -45,6 +46,12 @@ int main(int argc, char *argv[])
         }
     }
 
+    // error check to see if error happened while reading directory
+    if (errno != 0) {
+        perror("Error occured while reading directory");
+        closedir(dir);
+        return -1;
+    }
 
     // if loop finishes, file was not found in the directory, return 0, not an error but nothing
     // found

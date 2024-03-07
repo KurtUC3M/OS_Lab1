@@ -5,6 +5,7 @@
 #include <sys/types.h>	// Header file for system calls opendir, readdir y closedir
 #include <dirent.h>
 #include <string.h>
+#include <errno.h>      // Header file to help with readdir system call
 
 #define PATH_MAX 4096
 
@@ -43,6 +44,13 @@ int main(int argc, char *argv[])
     // while directory has more files, iterate thru each and print
     while ((entry = readdir(dir)) != NULL) {
         printf("%s\n", entry->d_name);
+    }
+
+    // error check to see if error happened while reading directory
+    if (errno != 0) {
+        perror("Error occured while reading directory");
+        closedir(dir);
+        return -1;
     }
 
     // close directory and return 0
