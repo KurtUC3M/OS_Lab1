@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
     // found
     if (strcmp(entry->d_name, file_name) == 0) {
 
-      printf1("File %s is in directory %s\n", file_name, dir_name);
+      printf("File %s is in directory %s\n", file_name, dir_name);
       closedir(dir);
       return 0;
     }
