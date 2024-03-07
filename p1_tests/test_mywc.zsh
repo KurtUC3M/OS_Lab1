@@ -5,7 +5,7 @@ touch file.txt
 
 # Case 1: File with some text in it
     echo Creating test case 1: base case:
-    echo "This is a test" > file.txt
+    echo "This is a test \n another line \n line 3" > file.txt
     # Create the two .txt to compare and errase spaces using tr
     wc file.txt | tr -d "[:blank:]" > outwc.txt
     binaries/mywc.o file.txt | tr -d "[:blank:]" > outmywc.txt
@@ -82,6 +82,26 @@ touch file.txt
         fi
     rm outwc.txt outmywc.txt
     # Remove the test directory created for this test.
+    rm -rf file.txt
+
+
+# Case 5: File with only one line in it
+    echo Creating test case 5: one line
+    echo "This is a test" > file.txt
+    # Create the two .txt to compare and errase spaces using tr
+    wc file.txt | tr -d "[:blank:]" > outwc.txt
+    binaries/mywc.o file.txt | tr -d "[:blank:]" > outmywc.txt
+    # Compare the two .txt files and remove them when finished
+    echo Testing case 5:
+    diff outwc.txt outmywc.txt > diff.txt
+    #Output a message if the diff is successful
+    if [ -s diff.txt ]; then
+        echo "Test failed :("
+        else
+            echo "Test passed :)"
+            fi
+    rm outwc.txt outmywc.txt
+    # Remove the file created for this test.
     rm -rf file.txt
 
 
