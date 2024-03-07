@@ -66,4 +66,5 @@ diff f1ls.txt f1myls.txt
 rm f1ls.txt f1myls.txt
 # Remove the test directory created for this test.
 rm test.txt
+
 # For this case we see that the usualls command will show the file name,while the myls command will output an error. We can check that with the 2> to redirect the stderror of the command to a file and then compare the two files.
