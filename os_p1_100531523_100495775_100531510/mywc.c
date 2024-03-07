@@ -36,12 +36,12 @@ int main(int argc, char *argv[])
     int midWord = 0;
 
     // while loop for reading thru the file
-    while ((ch = read(fd, buffer, BUF_SIZE)) > 0) {
+    while ((ch = read(fd, buffer, BUF_SIZE)) > 0) { // read in a chunk 
         // add number of bytes of current character
         bytes += ch;
 
         // find total number of lines
-        for (int i = 0; i < ch; i++) {
+        for (int i = 0; i < ch; i++) { // read over each element byte by byte
             if (buffer[i] == '\n') {
                 lines++;
             }
@@ -61,6 +61,11 @@ int main(int argc, char *argv[])
         }
     }
 
+    // if ch==-1 an error occurs while file is read
+    if (ch == -1) {
+        perror("Error reading file");
+        return -1;
+    }
 
     // close open file
     close(fd);
