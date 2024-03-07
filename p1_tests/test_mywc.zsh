@@ -4,64 +4,64 @@
 touch file.txt
 
 # Case 1: File with some text in it
-echo Creating test case 1: base case:
-echo "This is a test" > file.txt
-# Create the two .txt to compare and errase spaces using tr
-wc file.txt | tr -d "[:blank:]" > outwc.txt
-binaries/mywc.o file.txt | tr -d "[:blank:]" > outmywc.txt
-# Compare the two .txt files and remove them when finished
-echo Testing case 1:
-diff outwc.txt outmywc.txt > diff.txt
-#Output a message if the diff is successful
-if [ -s diff.txt ]; then
-    echo "Test failed :("
-else
-    echo "Test passed :)"
-fi
-rm outwc.txt outmywc.txt
-# Remove the file created for this test.
-rm -rf file.txt
+    echo Creating test case 1: base case:
+    echo "This is a test" > file.txt
+    # Create the two .txt to compare and errase spaces using tr
+    wc file.txt | tr -d "[:blank:]" > outwc.txt
+    binaries/mywc.o file.txt | tr -d "[:blank:]" > outmywc.txt
+    # Compare the two .txt files and remove them when finished
+    echo Testing case 1:
+    diff outwc.txt outmywc.txt > diff.txt
+    #Output a message if the diff is successful
+    if [ -s diff.txt ]; then
+            echo "Test failed :("
+        else
+            echo "Test passed :)"
+        fi
+    rm outwc.txt outmywc.txt
+    # Remove the file created for this test.
+    rm -rf file.txt
 
 
 # Case 2: Empty file
-echo Creating test case 2:
-touch file.txt
-# Create the two .txt to compare and errase spaces using tr
-wc file.txt | tr -d "[:blank:]" > outwc.txt
-binaries/mywc.o file.txt | tr -d "[:blank:]" > outmywc.txt
-# Compare the two .txt files and remove them when finished
-echo Testing case 2: empty file:
-diff outwc.txt outmywc.txt > diff.txt
-#Output a message if the diff is successful
-if [ -s diff.txt ]; then
-    echo "Test failed :("
-else
-    echo "Test passed :)"
-fi
-rm outwc.txt outmywc.txt
-# Remove the test directory created for this test.
-rm -rf file.txt
+    echo Creating test case 2:
+    touch file.txt
+    # Create the two .txt to compare and errase spaces using tr
+    wc file.txt | tr -d "[:blank:]" > outwc.txt
+    binaries/mywc.o file.txt | tr -d "[:blank:]" > outmywc.txt
+    # Compare the two .txt files and remove them when finished
+    echo Testing case 2: empty file:
+    diff outwc.txt outmywc.txt > diff.txt
+    #Output a message if the diff is successful
+    if [ -s diff.txt ]; then
+            echo "Test failed :("
+        else
+            echo "Test passed :)"
+        fi
+    rm outwc.txt outmywc.txt
+    # Remove the test directory created for this test.
+    rm -rf file.txt
 
 
 # Case 3: File with only one letter
-echo Creating test case 3:
-touch file.txt
-echo "a" > file.txt
-# Create the two .txt to compare and errase spaces using tr
-wc file.txt | tr -d "[:blank:]" > outwc.txt
-binaries/mywc.o file.txt | tr -d "[:blank:]" > outmywc.txt
-# Compare the two .txt files and remove them when finished
-echo Testing case 3: one letter:
-diff outwc.txt outmywc.txt > diff.txt
-#Output a message if the diff is successful
-if [ -s diff.txt ]; then
-    echo "Test failed :("
-else
-    echo "Test passed :)"
-fi
-rm outwc.txt outmywc.txt
-# Remove the test directory created for this test.
-rm -rf file.txt
+    echo Creating test case 3:
+    touch file.txt
+    echo "a" > file.txt
+    # Create the two .txt to compare and errase spaces using tr
+    wc file.txt | tr -d "[:blank:]" > outwc.txt
+    binaries/mywc.o file.txt | tr -d "[:blank:]" > outmywc.txt
+    # Compare the two .txt files and remove them when finished
+    echo Testing case 3: one letter:
+    diff outwc.txt outmywc.txt > diff.txt
+    #Output a message if the diff is successful
+    if [ -s diff.txt ]; then
+            echo "Test failed :("
+        else
+            echo "Test passed :)"
+        fi
+    rm outwc.txt outmywc.txt
+    # Remove the test directory created for this test.
+    rm -rf file.txt
 
 
 # Case 4: File with only one word
@@ -84,5 +84,6 @@ rm -rf file.txt
     # Remove the test directory created for this test.
     rm -rf file.txt
 
-    # Delete the diff.txt file
-    rm diff.txt
+
+# Delete the diff.txt file
+rm diff.txt
